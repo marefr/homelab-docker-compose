@@ -1,11 +1,9 @@
 #!/bin/sh
 set +x
 
-TARGET=${1:-"../homelab-private"}
+. ./scripts/functions.sh
 
-get_abs_filename() {
-  echo "$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
-}
+TARGET=${1:-"../homelab-private/stacks"}
 
 find ${TARGET} -iname "compose.override.yaml" | while read f;
 do
