@@ -28,7 +28,7 @@ Create a `homelab-private` directory/repository one level up from this.
 
 Create a docker compose override by putting a `compose.override.yaml` and optionally other files in `<private repo>/<dir>`, e.g. `homelab-private/unifi-controller/compose.override.yaml`.
 
-Optionally create an `<private repo>/override` directory to symlink additional files.
+Optionally create an `<private repo>/<dir>/override` directory to symlink additional files.
 
 ### Mirror private files as symbolic links
 
