@@ -12,7 +12,7 @@ do
   fn=${f#"$TARGET/"}
   absfile=$(get_abs_filename "$f")
   set -x
-  ln -sf $absfile "./$fn"
+  ln -sf $absfile "./stacks/$fn"
   { set +x; } &> /dev/null
 
   # any override directory in target directory
@@ -21,7 +21,7 @@ do
     dn=${d#"$TARGET/"}
     abssubdir=$(get_abs_filename "$d")
     set -x
-    ln -sf $abssubdir "./$dn"
+    ln -sf $abssubdir "./stacks/$dn"
     { set +x; } &> /dev/null
   done
 done
