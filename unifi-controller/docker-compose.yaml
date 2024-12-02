@@ -1,16 +1,9 @@
 services:
-  mongodb:
-#   Use max mongo version 5.0.X. Higher versions are incompatible with the mongo driver built into Unifi.
-#   Older versions are acceptable, ie: mongo:3.6
-    image: mongo:5.0
-    restart: unless-stopped
-
   unifi:
     image: ghcr.io/goofball222/unifi:8.6
+    container_name: unifi
     pull_policy: always
     restart: unless-stopped
-    links:
-      - mongodb
     ports:
       - 3478:3478/udp
       - 8080:8080
@@ -24,8 +17,4 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - DB_MONGO_LOCAL=false
-      - DB_MONGO_URI=mongodb://mongodb:27017/unifi
-      - STATDB_MONGO_URI=mongodb://mongodb:27017/unifi_stat
       - TZ=UTC
-      - UNIFI_DB_NAME=unifi
