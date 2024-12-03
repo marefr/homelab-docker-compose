@@ -1,2 +1,4 @@
 compose.override.yaml
 **/override
+preup/*
+!preup/_first.sh

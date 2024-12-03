@@ -1,13 +1,25 @@
-.PHONY: up down link unlink
+.PHONY: up pre-up stacks-up down link pre-link link-stacks unlink
 
-up:
-	./scripts/up.sh
+all: up
+
+pre-up:
+	./scripts/pre-up.sh
+
+stacks-up:
+	./scripts/stacks-up.sh
+
+up: pre-up stacks-up
 
 down:
 	./scripts/down.sh
 
-link:
-	./scripts/link.sh
+pre-link:
+	./scripts/pre-link.sh
+
+link-stacks:
+	./scripts/link-stacks.sh
+
+link: pre-link link-stacks
 
 unlink:
 	./scripts/unlink.sh
