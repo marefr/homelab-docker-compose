@@ -1,11 +1,8 @@
-#!/bin/sh
-
-Red="\033[0;31m"
+#!/bin/bash
 
 exit_if() {
   if [ $1 -ne 0 ]
   then
-    echo "${Red}"
     exit $1
   fi
 }
