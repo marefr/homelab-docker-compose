@@ -1,6 +1,6 @@
 services:
   unifi:
-    image: ghcr.io/goofball222/unifi:8.6
+    image: ghcr.io/goofball222/unifi:9.2
     container_name: unifi
     pull_policy: always
     restart: unless-stopped
