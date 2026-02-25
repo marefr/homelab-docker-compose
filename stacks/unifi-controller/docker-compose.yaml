@@ -1,9 +1,17 @@
 services:
+  mongo:
+    image: mongo:8.0
+    container_name: unifidb
+    pull_policy: always
+    restart: unless-stopped
+
   unifi:
-    image: ghcr.io/goofball222/unifi:9.2
+    image: ghcr.io/goofball222/unifi
     container_name: unifi
     pull_policy: always
     restart: unless-stopped
+    links:
+      - mongo
     ports:
       - 3478:3478/udp
       - 8080:8080
@@ -17,4 +25,8 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
     environment:
+      - DB_MONGO_LOCAL=false
+      - DB_MONGO_URI=mongodb://mongo:27017/unifi
+      - STATDB_MONGO_URI=mongodb://mongo:27017/unifi_stat
       - TZ=UTC
+      - UNIFI_DB_NAME=unifi
